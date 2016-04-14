@@ -1,5 +1,9 @@
-# charts
-simple svg charts.
+# scharts
+simple svg scharts.
+
+### demo
+
+[click here](http://youngerheart.github.io/scharts)
 
 ### usage
 
