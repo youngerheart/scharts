@@ -1,0 +1,16 @@
+{
+  "name": "scharts",
+  "version": "0.0.0",
+  "description": "simple svg charts.",
+  "main": "src/schart.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/youngerheart/scharts.git"
+  },
+  "author": "youngerheart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/youngerheart/scharts/issues"
+  },
+  "homepage": "https://github.com/youngerheart/scharts",
+}

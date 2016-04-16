@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>schat demo</title>
+  <meta charset="utf-8">
+  <style type="text/css">
+    #line {
+      height: 300px;
+      width: 600px;
+    }
+  </style>
+</head>
+<body>
+<div id="line"></div>
+</body>
+<script type="text/javascript" src="src/schart.js"></script>
+<script type="text/javascript" src="src/line.js"></script>
+<script type="text/javascript">
+  if(schart) {
+    var lineEl = document.getElementById('line');
+    new schart(lineEl, {
+      type: 'line',
+      xIndex: {
+        line: false
+      },
+      yIndex: {
+        num: 5
+      },
+      line: {
+        point: {
+          fill: false,
+          radius: 4
+        },
+        width: 4,
+        color: '#ccc'
+      },
+      data: {
+        '02-18': 0,
+        '02-19': 234,
+        '02-20': 634,
+        '02-21': 154,
+        '02-22': 164
+      }
+    });
+  }
+</script>
+</html>
