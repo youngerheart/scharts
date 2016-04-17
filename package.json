@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "simple svg charts.",
   "main": "src/schart.js",
+  "files": [
+    "README.md",
+    "src/"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/youngerheart/scharts.git"
@@ -12,5 +16,5 @@
   "bugs": {
     "url": "https://github.com/youngerheart/scharts/issues"
   },
-  "homepage": "https://github.com/youngerheart/scharts",
+  "homepage": "https://github.com/youngerheart/scharts"
 }

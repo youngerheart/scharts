@@ -14,8 +14,10 @@ var schart = function(el, config) {
 
 if (typeof window === 'undefined') {
   module.exports = function(methods) {
-    if(Array.isArray(methods)) methods.forEach(function(method) {
-      schart.prototype[method] = require('schart/' + method);
-    });
+    if (Array.isArray(methods)) {
+      methods.forEach(function(method) {
+        schart.prototype[method] = require('schart/' + method);
+      });
+    }
   };
 }

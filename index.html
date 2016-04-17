@@ -16,7 +16,7 @@
 <script type="text/javascript" src="src/schart.js"></script>
 <script type="text/javascript" src="src/line.js"></script>
 <script type="text/javascript">
-  if(schart) {
+  if(typeof schart !== 'undefined') {
     var lineEl = document.getElementById('line');
     new schart(lineEl, {
       type: 'line',
