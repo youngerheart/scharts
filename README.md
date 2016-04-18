@@ -11,7 +11,7 @@ require('scharts')(['line', ...]);
 
 ```
 var lineEl = document.getElementById('line');
-new schart(lineEl, {
+schart(lineEl, {
   type: 'line',
   xIndex: {
     line: false
