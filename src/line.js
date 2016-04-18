@@ -133,4 +133,4 @@ var line = function(el, config) {
 };
 
 if (typeof window === 'undefined') module.exports = line;
-else if (typeof schart !== 'undefined') schart.prototype.line = line;
+else if (typeof schart !== 'undefined') schart.line = line;
