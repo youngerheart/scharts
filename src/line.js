@@ -132,5 +132,5 @@ var line = function(el, config) {
   el.appendChild(svg);
 };
 
-if (typeof window === 'undefined') module.exports = line;
+if (typeof module !== 'undefined') module.exports = line;
 else if (typeof schart !== 'undefined') schart.line = line;

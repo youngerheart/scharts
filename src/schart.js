@@ -11,12 +11,13 @@ var schart = function(el, config) {
   if (schart[config.type]) schart[config.type](el, config);
 };
 
-if (typeof window === 'undefined') {
+if (typeof module !== 'undefined') {
   module.exports = function(methods) {
     if (Array.isArray(methods)) {
       methods.forEach(function(method) {
         schart[method] = require('./' + method);
       });
     }
+    return schart;
   };
 }
