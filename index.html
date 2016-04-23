@@ -18,7 +18,7 @@
 <script type="text/javascript">
   if(typeof schart !== 'undefined') {
     var lineEl = document.getElementById('line');
-    schart(lineEl, {
+    var line = schart(lineEl, {
       type: 'line',
       xIndex: {
         line: false
@@ -33,14 +33,21 @@
         },
         width: 4,
         color: '#ccc'
-      },
-      data: {
-        '02-18': 0,
-        '02-19': 234,
-        '02-20': 634,
-        '02-21': 154,
-        '02-22': 164
       }
+    });
+    line.render({
+      '02-18': 0,
+      '02-19': 234,
+      '02-20': 634,
+      '02-21': 154,
+      '02-22': 164
+    });
+    line.render({
+      '02-18': 23,
+      '02-19': 234,
+      '02-20': 134,
+      '02-21': 154,
+      '02-22': 164
     });
   }
 </script>
