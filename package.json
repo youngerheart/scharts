@@ -1,6 +1,6 @@
 {
   "name": "scharts",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "simple svg charts.",
   "main": "src/schart.js",
   "files": [
