@@ -17,11 +17,19 @@ var toFixed = function(num) {
 };
 
 var line = function(el, config) {
-  var svg = createElement('svg', {
+  this.el = el;
+  this.config = config;
+  this.svg = createElement('svg', {
     width: el.offsetWidth,
     height: el.offsetHeight
   });
-  var data = config.data;
+};
+
+line.prototype.render = function(data) {
+  var el = this.el;
+  var config = this.config;
+  var svg = this.svg;
+  svg.innerHTML = '';
   // 得到数据区间
   if (data) {
     var num = Object.keys(data).length;

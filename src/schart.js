@@ -1,14 +1,14 @@
 var schart = function(el, config) {
   var log = 'schart Error: ';
   if (!config || !config.type) {
-    console.error(log + 'config or config.type is undefined');
+    console.error(log + 'config or config.type is not defined');
     return null;
   }
   if (el.offsetWidth < 50 || el.offsetHeight < 50) {
     console.error(log + 'that element is too small!');
     return null;
   }
-  if (schart[config.type]) schart[config.type](el, config);
+  return new schart[config.type](el, config);
 };
 
 if (typeof module !== 'undefined') {

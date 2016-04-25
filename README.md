@@ -1,5 +1,9 @@
-# charts
-simple svg charts.
+# scharts
+simple svg scharts.
+
+### demo
+
+[click here](http://youngerheart.github.io/scharts)
 
 ### usage
 
@@ -11,7 +15,7 @@ require('scharts')(['line', ...]);
 
 ```
 var lineEl = document.getElementById('line');
-schart(lineEl, {
+var line = schart(lineEl, {
   type: 'line',
   xIndex: {
     line: false
@@ -26,13 +30,14 @@ schart(lineEl, {
     },
     width: 4,
     color: '#ccc'
-  },
-  data: {
-    '02-18': 0,
-    '02-19': 234,
-    '02-20': 634,
-    '02-21': 154,
-    '02-22': 164
   }
+});
+
+line.render({
+  '02-18': 0,
+  '02-19': 234,
+  '02-20': 634,
+  '02-21': 154,
+  '02-22': 164
 });
 ```
