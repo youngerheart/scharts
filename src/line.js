@@ -29,7 +29,7 @@ line.prototype.render = function(data) {
   var el = this.el;
   var config = this.config;
   var svg = this.svg;
-  svg.innerHTML = '';
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
   // 得到数据区间
   if (data) {
     var num = Object.keys(data).length;
@@ -137,7 +137,7 @@ line.prototype.render = function(data) {
     });
   }
 
-  el.appendChild(svg);
+  if(!el.hasChildNodes()) el.appendChild(svg);
 };
 
 if (typeof module !== 'undefined') module.exports = line;
