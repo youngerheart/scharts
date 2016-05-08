@@ -46,13 +46,12 @@ line.prototype.render = function(data) {
     num--;
     var xIndexConf = config.xIndex || {};
     var yIndexConf = config.yIndex || {};
-    yIndexConf = yIndexConf.num - 1 || 3;
+    var yIndex = yIndexConf.num - 1 || 3;
     var xInterval = num ? (el.offsetWidth - 120) / num : 0;
-    var yInterval = (el.offsetHeight - (min ? 100 : 70)) / yIndexConf;
+    var yInterval = (el.offsetHeight - (min ? 100 : 70)) / yIndex;
     // 若有小数，保留6位有效数字
     yInterval = toFixed(yInterval);
-    for (var i = yIndexConf; i > -1 ; i--) {
-      var yNum = i * yInterval + 20;
+    var drewYLine = function(yNum) {
       // y轴文字
       svg.appendChild(createElement('text', {
         'text-anchor': 'end',
@@ -61,9 +60,9 @@ line.prototype.render = function(data) {
         fill: '#999',
         x: 60,
         y: yNum
-      }, toFixed(min + (max - min) / yIndexConf * (yIndexConf - i))));
+      }, max - min ? toFixed(min + (max - min) / yIndex * (yIndex - i)) : max));
       // y轴线
-      if (yIndexConf.line === false) continue;
+      if (yIndexConf.line === false) return;
       svg.appendChild(createElement('line', {
         x1: 70,
         x2: el.offsetWidth,
@@ -73,13 +72,20 @@ line.prototype.render = function(data) {
         'stroke-width': 1
       }));
     }
+    if (min !== max) {
+      for (var i = yIndex; i > -1 ; i--) {
+        drewYLine(i * yInterval + 20)
+      }
+    } else {
+      drewYLine(el.offsetHeight / 2);
+    }
     var trans = (el.offsetHeight - (min ? 100 : 70)) / (max - min);
     var line = config.line || {};
     var linePoint = line.point || {};
     var circles = [];
     xArr.forEach(function(item, index) {
       var xIndex = xInterval ? 100 + xInterval * index : el.offsetWidth / 2;
-      var yIndex = (el.offsetHeight - (min ? 80 : 50) - trans * (yArr[index] - min));
+      var yIndex = min === max ? el.offsetHeight / 2 : (el.offsetHeight - (min ? 80 : 50) - trans * (yArr[index] - min));
       points.push(xIndex + ',' + yIndex);
       svg.appendChild(createElement('text', {
         'text-anchor': 'middle',
