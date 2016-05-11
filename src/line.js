@@ -71,10 +71,10 @@ line.prototype.render = function(data) {
         stroke: '#ccc',
         'stroke-width': 1
       }));
-    }
+    };
     if (min !== max) {
       for (var i = yIndex; i > -1 ; i--) {
-        drewYLine(i * yInterval + 20)
+        drewYLine(i * yInterval + 20);
       }
     } else {
       drewYLine(el.offsetHeight / 2);
@@ -83,18 +83,11 @@ line.prototype.render = function(data) {
     var line = config.line || {};
     var linePoint = line.point || {};
     var circles = [];
+    var xOffset = 0;
     xArr.forEach(function(item, index) {
       var xIndex = xInterval ? 100 + xInterval * index : el.offsetWidth / 2;
       var yIndex = min === max ? el.offsetHeight / 2 : (el.offsetHeight - (min ? 80 : 50) - trans * (yArr[index] - min));
       points.push(xIndex + ',' + yIndex);
-      svg.appendChild(createElement('text', {
-        'text-anchor': 'middle',
-        'alignment-baseline': 'hanging',
-        'font-size': 12,
-        fill: '#999',
-        x: xIndex,
-        y: el.offsetHeight - 40
-      }, item));
       if (linePoint) {
         circles.push(createElement('circle', {
           cx: xIndex,
@@ -105,14 +98,18 @@ line.prototype.render = function(data) {
           fill: line.fill ? line.color || '#ccc' : '#fff'
         }));
       }
-      svg.appendChild(createElement('text', {
-        'text-anchor': 'middle',
-        'alignment-baseline': 'hanging',
-        'font-size': 12,
-        fill: '#999',
-        x: xIndex,
-        y: el.offsetHeight - 40
-      }, item));
+      xOffset += xInterval;
+      if (index === 0 || xOffset > item.length * 12) {
+        xOffset = 0;
+        svg.appendChild(createElement('text', {
+          'text-anchor': 'middle',
+          'alignment-baseline': 'hanging',
+          'font-size': 12,
+          fill: '#999',
+          x: xIndex,
+          y: el.offsetHeight - 40
+        }, item));
+      }
       // y轴线
       if (xIndexConf.line === false) return;
       svg.appendChild(createElement('line', {
@@ -143,7 +140,7 @@ line.prototype.render = function(data) {
     });
   }
 
-  if(!el.hasChildNodes()) el.appendChild(svg);
+  if (!el.hasChildNodes()) el.appendChild(svg);
 };
 
 if (typeof module !== 'undefined') module.exports = line;
