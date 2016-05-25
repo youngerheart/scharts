@@ -9,10 +9,10 @@ var createElement = function(name, obj, html) {
 
 var toFixed = function(num) {
   var numArr = num.toString().split('.');
-  if (numArr[1] && (numArr[1].length + numArr[0].length > 6)) {
-    if (numArr[0].length < 6) num = num.toFixed(6 - numArr[0].length);
+  if (numArr[1] && (numArr[1].length + numArr[0].length > 4)) {
+    if (numArr[0].length < 4) num = num.toFixed(4 - numArr[0].length);
     else num = parseInt(num, 10);
-  } else num.toFixed(6);
+  } else num.toFixed(4);
   return num;
 };
 
